@@ -1,0 +1,39 @@
+﻿<Window x:Class="EnterpriseMVVM.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	    xmlns:mohsenmou="https://github.com/mohsenmou/ui-wpf"
+	    xmlns:view="clr-namespace:EnterpriseMVVM.UI.View"
+        xmlns:viewModel="clr-namespace:EnterpriseMVVM.UI.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        mohsenmou:WindowSettings.Save="True"
+		WindowStartupLocation="CenterScreen"
+        Style="{DynamicResource MainWindowStyle}">
+	<Window.Resources>
+        <DataTemplate DataType="{x:Type viewModel:CategoryMainViewModel}">
+            <view:CategoryMainView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ProductMainViewModel}">
+            <view:ProductMainView />
+        </DataTemplate>
+    </Window.Resources>
+    <Grid Background="{mohsenmou:ThemeResource ResourceKey=ContentBackground}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="200" />
+                <ColumnDefinition Width="5*" />
+            </Grid.ColumnDefinitions>
+            <view:MainNavigationView Margin="10,10,10,5" />
+            <GridSplitter Focusable="False"
+                          FocusVisualStyle="{x:Null}"
+                          HorizontalAlignment="Right"
+                          Width="5"
+                          Background="Transparent" />
+            <view:MainDetailView x:Name="mainDetailView"
+                                 Grid.Column="1"
+                                 Margin="0,10,10,5" />
+        </Grid>
+    </Grid>
+</Window>

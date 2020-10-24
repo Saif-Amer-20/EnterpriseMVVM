@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="EnterpriseMVVM.UI.View.CategoryDetailView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:fe="clr-namespace:Mohsenmou.MVVM.Core;assembly=Mohsenmou.MVVM.Core"
+    xmlns:mohsenmou="https://github.com/mohsenmou/ui-wpf"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    FocusVisualStyle="{x:Null}"
+    IsTabStop="False">
+    <UserControl.InputBindings>
+        <KeyBinding
+            Command="{Binding SaveCommand}"
+            Gesture="Ctrl+S" />
+        <KeyBinding
+            Command="{Binding DeleteCommand}"
+            Gesture="Ctrl+D" />
+    </UserControl.InputBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <GroupBox Header="Category Detail">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Margin="3,18,0,18"
+                    Text="Category Name:" />
+                <TextBox
+                    Grid.Column="1"
+                    Margin="3,18,0,18"
+                    fe:FocusExtension.IsFocused="{Binding IsFocused, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Text="{Binding Category.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock
+                    Grid.Row="1"
+                    Margin="3,0,0,0"
+                    Text="Category Description:" />
+                <TextBox
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="3,0,0,0"
+                    Text="{Binding Category.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </Grid>
+        </GroupBox>
+        <StackPanel
+            Grid.Row="1"
+            Margin="0,18,0,0"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+            <Button
+                Padding="5"
+                mohsenmou:ButtonProperties.Icon="{DynamicResource Icon_Save}"
+                mohsenmou:ButtonProperties.ShowIcon="True"
+                Command="{Binding SaveCommand}"
+                Content="Save"
+				Style="{DynamicResource ToolBarButtonStyle}" />
+            <Button
+                Padding="5"
+                mohsenmou:ButtonProperties.Icon="{DynamicResource Icon_Remove}"
+                mohsenmou:ButtonProperties.ShowIcon="True"
+                Command="{Binding DeleteCommand}"
+                Content="Delete"
+				Style="{DynamicResource ToolBarButtonStyle}" />
+            <Button
+                Padding="5"
+                mohsenmou:ButtonProperties.Icon="{DynamicResource Icon_Reset}"
+                mohsenmou:ButtonProperties.ShowIcon="True"
+                Style="{DynamicResource ToolBarButtonStyle}"
+                Command="{Binding ResetCommand}"
+                IsCancel="True"
+                Content="Reset"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

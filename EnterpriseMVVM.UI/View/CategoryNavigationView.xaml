@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="EnterpriseMVVM.UI.View.CategoryNavigationView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+     <GroupBox
+        Focusable="False"
+        Header="Categories">
+        <ScrollViewer
+            HorizontalScrollBarVisibility="Disabled"
+            VerticalScrollBarVisibility="Auto">
+            <ItemsControl
+                FocusVisualStyle="{x:Null}"
+                Focusable="False"
+                ItemsSource="{Binding Items}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button
+                            Command="{Binding OpenDetailViewCommand}"
+                            Content="{Binding DisplayMember}"
+                            Style="{DynamicResource ItemsControlButtonStyle}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </GroupBox>
+</UserControl>

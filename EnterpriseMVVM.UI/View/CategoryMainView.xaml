@@ -1,0 +1,112 @@
+﻿<UserControl x:Class="EnterpriseMVVM.UI.View.CategoryMainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:mohsenmou="https://github.com/mohsenmou/ui-wpf"
+    xmlns:fe="clr-namespace:Mohsenmou.MVVM.Core;assembly=Mohsenmou.MVVM.Core"
+    xmlns:view="clr-namespace:EnterpriseMVVM.UI.View"
+    xmlns:viewModel="clr-namespace:EnterpriseMVVM.UI.ViewModel">
+    <UserControl.InputBindings>
+        <KeyBinding
+            Command="{Binding CreateNewDetailCommand}"
+            CommandParameter="{x:Type viewModel:CategoryDetailViewModel}"
+            Gesture="Ctrl+N" />
+        <KeyBinding
+            Command="{Binding PrintCommand}"
+            Gesture="Ctrl+P" />
+        <KeyBinding
+            Command="{Binding FindTextBoxFocusCommand}"
+            Gesture="Ctrl+F" />
+    </UserControl.InputBindings>
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type viewModel:CategoryDetailViewModel}">
+            <view:CategoryDetailView />
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid Margin="0,5,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+          <StackPanel
+            Grid.ColumnSpan="3"
+            Margin="0,0,0,10"
+            HorizontalAlignment="Left"
+            Orientation="Horizontal">
+            <Button
+                Padding="5"
+                fe:FocusExtension.IsFocused="{Binding IsFocused, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"              
+                mohsenmou:ButtonProperties.ShowIcon="True"
+                mohsenmou:ButtonProperties.Icon="{DynamicResource Icon_New}"
+                Style="{DynamicResource ToolBarButtonStyle}"
+                Command="{Binding CreateNewDetailCommand}"
+                CommandParameter="{x:Type viewModel:CategoryDetailViewModel}"
+                Content="New" />
+            <Button
+                Padding="5"
+                mohsenmou:ButtonProperties.ShowIcon="True"
+                mohsenmou:ButtonProperties.Icon="{DynamicResource Icon_Print}"
+                Style="{DynamicResource ToolBarButtonStyle}"
+                Command="{Binding PrintCommand}"
+                Content="Print" />
+            <Button
+                Padding="5"
+                mohsenmou:ButtonProperties.ShowIcon="True"
+                mohsenmou:ButtonProperties.Icon="{DynamicResource Icon_PrintPreview}"
+                Style="{DynamicResource ToolBarButtonStyle}"
+                Command="{Binding PrintPreviewCommand}"
+                Content="Print Preview" />
+            <Button
+                Padding="5"
+                mohsenmou:ButtonProperties.ShowIcon="True"
+                mohsenmou:ButtonProperties.Icon="{DynamicResource Icon_ASC_Sort}"
+                Style="{DynamicResource ToolBarButtonStyle}"
+                Command="{Binding AscendingSortCommand}"
+                Content="Ascending Sort" />
+            <Button
+                Padding="5"
+                mohsenmou:ButtonProperties.ShowIcon="True"
+                mohsenmou:ButtonProperties.Icon="{DynamicResource Icon_DES_Sort}"
+                Style="{DynamicResource ToolBarButtonStyle}"
+                Command="{Binding DescendingSortCommand}"
+                Content="Descending Sort" />
+            <TextBox
+                MinWidth="200"
+                MaxWidth="350"
+                Padding="5"
+                Text="{Binding FindText, UpdateSourceTrigger=PropertyChanged}"
+                fe:FocusExtension.IsFocused="{Binding IsFocusedFindTextBox, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                mohsenmou:TextBoxHelper.Watermark="Search categories"
+                mohsenmou:TextBoxHelper.ClearTextButton="True"
+                Style="{DynamicResource ToolBarTextBoxStyle}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="TextChanged">
+                        <i:InvokeCommandAction Command="{Binding FindCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
+        </StackPanel>
+        <view:CategoryNavigationView
+            Grid.Row="1"
+            DataContext="{Binding NavigationViewModel}"
+            Focusable="False" />
+        <GridSplitter
+            Grid.Row="1"
+            Width="5"
+            HorizontalAlignment="Right"
+            Background="Transparent"
+            FocusVisualStyle="{x:Null}"
+            Focusable="False" />
+        <ContentControl
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="10,0,0,0"
+            Content="{Binding DetailViewModel}"
+            Focusable="False" />
+    </Grid>
+</UserControl>

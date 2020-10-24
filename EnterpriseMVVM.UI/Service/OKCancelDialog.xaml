@@ -1,0 +1,41 @@
+﻿<Window x:Class="EnterpriseMVVM.UI.Service.OKCancelDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mohsenmou="https://github.com/mohsenmou/ui-wpf"
+    Title="MessageDialog"
+    MinWidth="100"
+    MaxWidth="400"
+    MaxHeight="150"
+    ResizeMode="NoResize"
+    Style="{DynamicResource MainWindowStyle}">
+    <Grid Background="{mohsenmou:ThemeResource ResourceKey=ContentBackground}">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock
+            Name="textBlock"
+            Margin="8"
+            Foreground="{mohsenmou:ThemeResource ResourceKey=ContentForeground}"
+            Text="The Message Text"
+            TextWrapping="Wrap" />
+        <StackPanel
+            Grid.Row="1"
+            Margin="5,0,5,5"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+            <Button x:Name="okButton"
+                Style="{DynamicResource ToolBarButtonStyle}"
+                Padding="5"
+                Click="OkButton_Click"
+                Content="OK"
+                IsDefault="True" />
+            <Button x:Name="cancelButton"
+                Style="{DynamicResource ToolBarButtonStyle}"
+                Padding="5"
+                Click="CancelButton_Click"
+                Content="Cancel"
+                IsCancel="True" />
+        </StackPanel>
+    </Grid>
+</Window>

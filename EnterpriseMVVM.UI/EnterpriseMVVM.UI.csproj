@@ -14,6 +14,7 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -86,16 +87,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -115,6 +108,9 @@
     <Compile Include="Base\IEntityViewModel.cs" />
     <Compile Include="Base\NavigationItemViewModel.cs" />
     <Compile Include="Base\MainViewModelBase.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Startup\Bootstrapper.cs" />
     <Compile Include="Event\AfterDetailChanged.cs" />
     <Compile Include="Event\AfterDetailDeletedEvent.cs" />
@@ -128,30 +124,6 @@
     <Compile Include="Data\Repositories\CategoryRepository.cs" />
     <Compile Include="Data\Repositories\IProductRepository.cs" />
     <Compile Include="Data\Repositories\ProductRepository.cs" />
-    <Compile Include="View\MainNavigationView.xaml.cs">
-      <DependentUpon>MainNavigationView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\MainDetailView.xaml.cs">
-      <DependentUpon>MainDetailView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\CategoryMainView.xaml.cs">
-      <DependentUpon>CategoryMainView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\CategoryDetailView.xaml.cs">
-      <DependentUpon>CategoryDetailView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\CategoryNavigationView.xaml.cs">
-      <DependentUpon>CategoryNavigationView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\ProductMainView.xaml.cs">
-      <DependentUpon>ProductMainView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\ProductNavigationView.xaml.cs">
-      <DependentUpon>ProductNavigationView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\ProductDetailView.xaml.cs">
-      <DependentUpon>ProductDetailView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModel\CategoryDetailViewModel.g.cs" />
     <Compile Include="ViewModel\CategoryMainViewModel.g.cs" />
     <Compile Include="ViewModel\CategoryNavigationViewModel.g.cs" />
@@ -186,43 +158,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Service\OKCancelDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Service\PrintPreviewDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\MainDetailView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\MainNavigationView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\CategoryMainView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\CategoryNavigationView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\CategoryDetailView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\ProductMainView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\ProductNavigationView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\ProductDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
